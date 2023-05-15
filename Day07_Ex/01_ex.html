@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS EX_01</title>
+        <script>
+            var before = new Date().getTime()
+            
+            var sum = 0
+            for(var i=0;i<1000000;i++){
+                sum += i
+            }
+            var result = new Date().getTime() - before
+            document.write(result + "밀리초가 걸렸음!")
+        </script>
+    </head>
+</html>

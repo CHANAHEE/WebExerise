@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Function</title>
+
+        <script>
+            // 함수 선언 및 호출 [ 선언적 함수라고 부름 ]
+            function aaa(){
+                document.write("aaa<br>")
+            }
+
+            aaa() // JS 함수호출
+            
+            // 에러
+            //bbb()
+            //document.write("aaa<br>") // bbb 함수가 없기 때문에 에러. 에러가 났다고 해서 다운되지는 않는다. 
+
+            // 특이한 점 : 함수선언과 호출의 순서가 크게 영향받지 않음
+            bbb()
+
+            function bbb(){
+                document.write("bbb<br>")
+            }
+
+            // JS 는 코드를 실행하기 전에 <script> 안에 있는 선언적 함수부터 모두 읽어들임
+
+            // 아래 스크립트에서 선언한 함수를 호출
+            ccc() // -> 에러! 단, 이 스크립트만 멈춘다~
+        </script>
+
+        <!-- 또 다른 스크립트 -->
+        <script>
+            // 위 스크립트에서 만든 함수를 호출할 수 있음.
+            bbb()
+
+            function ccc() {
+                document.write("ccc<br>")
+            }
+        </script>
+
+        <!-- 파라미터 있는 함수 -->
+        <script>
+
+            document.write('<hr>')
+            document.write('<h4>파라미터 전달</h4>')
+
+            function ddd(age){
+                document.write("age : " + age)
+                document.write("<br>")
+            }
+
+            ddd(10)
+            ddd(20)
+            ddd("kim")
+            ddd() // 전달 안하면 undefined
+
+            // 여러개 매개변수
+            function eee(a,b){
+                document.write(a + " , " + b + "<br>")
+
+                if(a === undefined || b === undefined){
+                    document.write("2개의 수를 모두 전달해주세요")
+                    return
+                }
+
+                var c = a+b
+                document.write(c + "<br>")
+            }
+
+            eee(5,3)
+            eee(5)
+
+            // 혹시 똑같은 함수를 또 선언하면 에러일까요? 
+            function ddd(age){
+                document.write("새로운 age : " + age)
+                document.write("<br>")
+            }
+
+
+            // 함수 오버로딩 -> 오버로딩이란 개념이 없음~ 
+            function ddd(a,b){
+                document.write("함수 오버로딩 희망..<br>")
+            }
+            ddd(5,3)
+        </script>
+
+        <!-- 리턴 -->
+        <script>
+            document.write("<hr>")
+            document.write("<h4>함수의 Return</h4>")
+
+            function ggg(){
+                //return 10
+                //return true
+                //return "Aa"
+                //return 5>2
+                //return new Date()
+                return new Array(10,20,30)
+
+                // 여러개의 값을 리턴할수는 없음.
+            }
+
+            document.write(ggg() + "<br>")
+        </script>
+
+        <!-- 지역변수와 전역변수 -->
+        <script>
+            document.write("<hr>")
+            document.write("<h4>지역변수와 전역변수</h4>")
+
+            var b = 100;
+            function mmm(){
+                var a = 20 // 지역변수
+                document.write("a : " + a + "<br>")
+
+                b = 300
+                document.write("b : " + b + "<br>")
+
+                // JS 의 특별한 전역변수 선언 방법
+                // var 키워드 없이 변수 사용
+                c = 1000
+                document.write("c : " + c + "<br>")
+            }
+
+            mmm()
+            //document.write("a : " + a + "<br>") // error : 지역변수니까 못알아듣는다. 
+            document.write("b : " + b + "<br>")
+            document.write("c : " + c + "<br>")
+        </script>
+
+        <!-- 익명함수 : 이름이 없는 함수 -->
+        <script>
+            document.write("<hr>")
+            document.write("<h4>익명함수 </h4>")
+
+            // 변수에 함수를 대입하는 방식
+            var show = function(){
+                document.write('익명함수<br>')
+            }
+            
+            // 변수의 이름을 함수 호출에 사용함.
+            show()
+
+            var out = show
+            out()
+
+            // 즉, 함수를 값처럼 다른 변수에 전달할 수 있음.
+            // 이렇다는것은 함수를 다른 함수의 매개변수나 리턴값으로도 사용할 수 있다는 뜻. 
+
+            function kkk(g){
+                // 전달받은 함수를 g 라는 매개변수로 호출이 가능하다.
+                g()
+            }
+            kkk(show)
+            kkk( function(){
+                document.write("내가 만든 익명함수<br>")
+            })
+
+            // 익명함수를 매개변수로 전달하는 사례
+            // 이벤트 처리용 함수... 
+            function setOnClickEvent(g){ g() }
+            
+            setOnClickEvent(function(){
+                document.write("click a button<br>")
+            })
+
+            setOnClickEvent(function(){
+                document.write("click b button<br>")
+            })
+
+            // 당연히 리턴에도 사용가능 
+            function hhh(){
+                var ppp = function(){
+                    document.write("ppp<br>")
+                }
+
+                return ppp
+            }
+
+            var sss = hhh()
+
+            // 익명함수는 코드실행보다 먼저 읽어지지 않는다! -> 선언적함수만 먼저 읽어짐. 
+            //xxx() // error
+
+            var xxx = function() {}
+
+            // arguments 라는 특별한 매개변수 (배열)
+            function add(){
+                document.write("파라미터 개수 : " + arguments.length + "<br>")
+                
+                var sum = 0
+                for(var i = 0; i<arguments.length; i++){
+                    sum += arguments[i]
+                }
+
+                document.write("총합 : " + sum + "<br>")
+            }
+        
+            add()
+            add(10)
+            add(10,20)
+            add(10,20,30)
+        </script>
+    </head>
+
+    <body>
+        
+    </body>
+</html>

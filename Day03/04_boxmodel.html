@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>박스 모델</title>
+
+        <style>
+            p.aa{
+                /* 경계선 */
+                border-style: solid;
+                border-top-style: dotted;
+                border-width: 2px;
+                border-bottom-width: 5px;
+
+                border-color: red;
+                border-right-color: blue;
+
+                border-radius: 20px;
+                border-bottom-left-radius: 0px;
+                border-top-right-radius: 0px;
+
+                /* 경계선을 이미지가 보일 정도의 두께로 다짐 */
+                border: 30px solid transparent;
+                /* 경계선 이미지 */
+                border-image-source: url("./image/border.png");
+                border-image-slice: 30 30;
+                border-image-repeat: round;
+
+                /* 요소 크기 */
+                width: 70%;
+                height: 300px;
+
+                /* 요소 콘텐츠가 아니라 요소 자체를 가운데 정렬 */
+                margin-left: auto;
+                margin-right: auto;
+            }
+            html,body {height: 100%;}
+
+            /* 인라인 요소 - 너비지정 불가 */
+            a{background-color: red; width: 200px;}
+            em{background-color: aqua; width: 200px;}
+
+            /* 인라인 - 블럭 요소 -> 너비지정 가능 */
+            img{width: 300px; border: 1px solid black;}
+        </style>
+    </head>
+    <body>
+        
+        <!-- 경계선 border / 요소 크기 / 가운데 정렬 -->
+        <p class="aa">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique, optio distinctio veritatis magnam expedita, natus deleniti nulla doloribus amet vitae esse, vero debitis perferendis fugiat quos a aliquam quo sit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio fugit deleniti illo modi reprehenderit! Dolor, error unde expedita voluptatem beatae vel saepe? Sequi vitae facilis iste, autem quisquam at minima.
+        </p>
+
+        <!-- 인라인 요소의 크기 설정 및 가운데 정렬 -->
+
+        <!-- 인라인 요소 : 너비조정 불가능 -->
+        <a href="">anchor</a>
+        <em>Hello</em>
+
+        <img src="./image/image.png" alt="image">
+        <input type="text">
+
+        <!-- 마진 -->
+        <div id="m">
+            <p id="p1">p1</p>
+            <p id="p2">p2</p>
+        </div>
+
+        <style>
+            #p1{
+                background-color: red; 
+                margin: 0px;
+                height: 50px;
+                margin-bottom: 20px;
+            }
+            #p2{
+                background-color: green;
+                margin: 0px;
+                height: 50px;
+                margin-top: 20px;
+            }
+
+            #p1{
+                background-color: red; 
+                margin: 0px;
+                height: 50px;
+            }
+            /* 음수 마진을 주면 요소가 겹침 */
+            #p2{
+                background-color: green;
+                margin: 0px;
+                height: 50px;
+                width: 50%;
+                margin-top: -10px;
+            }
+        </style>
+
+        <!-- 배경 이미지 / 색상 -->
+        <p class="back">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur non esse odit. Distinctio ea pariatur, molestias mollitia voluptate possimus voluptas odit quasi vitae est placeat animi ratione quo sequi autem!
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis facere quae dolorum harum esse expedita. Distinctio dicta ipsum rerum aperiam, eius obcaecati consequuntur, saepe vitae, voluptates enim nulla. Quibusdam, fugiat?
+
+        </p>
+
+        <style>
+            p.back{
+                background-color: green;
+                background-image: url("./image/image.png");
+                height: 500px;
+                background-size: 200px 200px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        </style>
+
+        <!-- 배경 이미지가 붙어 있는 위치 설정 -->
+        <p id="attach">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam alias odit, nulla dolores minus reiciendis nisi iste, ad non vel velit enim suscipit explicabo nesciunt nemo fuga voluptatibus perspiciatis magni?
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non, mollitia. Facilis fuga quasi perspiciatis consequatur sed culpa fugiat in a illum nulla illo amet aspernatur, adipisci minima deleniti inventore vitae?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum officia vero eligendi ullam id corrupti totam? Iusto eos optio, illo eveniet impedit quos commodi dolorem, hic incidunt sequi voluptates illum?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam dolor tempore earum veniam, laborum soluta temporibus a expedita, doloribus harum atque saepe. Voluptas ad ab similique quidem harum placeat hic?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque numquam nihil voluptas doloremque adipisci, dolorum veritatis quae cumque exercitationem assumenda? Nulla quae exercitationem magnam ratione dolore laboriosam itaque quis aliquid?
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam voluptate itaque, obcaecati accusantium corrupti labore commodi iusto deleniti, excepturi, autem soluta temporibus aut voluptatibus nam. Dicta tempore voluptatum delectus architecto.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt ea, reiciendis impedit consequatur saepe porro omnis facere sed quas ipsum optio iste, fugit, dignissimos nostrum ex dicta aspernatur beatae quisquam!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur adipisci dolor consequuntur est labore. Libero, numquam repudiandae sint eaque provident quia in optio nam facere necessitatibus. Alias harum excepturi ex.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates tempora, fugiat ab commodi consectetur molestiae totam nobis velit nesciunt possimus temporibus ratione dolore veritatis eveniet reiciendis voluptas praesentium perferendis ad.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos ex inventore quisquam similique eos asperiores autem. Explicabo, neque, itaque in dicta illo vitae harum voluptatum delectus, expedita dolorum rem earum?
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt laudantium corrupti porro veniam! Accusamus dolor tempore optio esse molestias commodi atque. Illo nihil dolor voluptatum repellat et iure repudiandae aperiam.
+        </p>
+
+        <style>
+
+            #attach{
+                width: 60%;
+                height: 300px;
+                border: 2px solid blue;
+                overflow: scroll;
+
+                margin-left: auto;
+                margin-right: auto;
+
+                background-image: url("./image/image.png");
+                background-repeat: no-repeat;
+                background-position: center;
+
+                /* 요소가 스크롤 될 때 배경도 같이 스크롤 - 요소에 붙어있는 배경같은 느낌 */
+                background-attachment: scroll;
+                /* 콘텐츠에 배경이 붙은 느낌 */
+                background-attachment: local;
+                /* 브라우저에 배경에 이미지가 붙어 있음. */
+                background-attachment: fixed;
+            }
+        </style>
+    </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Custom Object</title>
+
+        <script>
+            // 자바스크립트에서 객체는 2가지 종류로 나뉨
+            // 1. 내장객체 : document, window, navigation 등등 / Data(), String(), Number(), Array(), Math() 등등
+            // 2. 사용자 정의 객체 
+
+            // 객체를 만드는 2가지 방법
+            // 1. 리터럴 객체 [ 객체를 생성하면서 설계하는 방식 ]
+            var person = {
+                // 멤버변수 - 속성(Property)
+                name:"sam",
+                age:20,
+
+                // 멤버함수 - 메소드(Method)
+                show: function(){
+                    document.write(this.name + " , ")
+                    document.write(this.age + "<br>")
+                    // this 키워드가 없으면 멤버변수를 인식하지 못함 [ 전역변수로 인식됨 ]
+                }
+            }
+            // 객체의 멤버를 출력해보자.
+            document.write("name : " + person.name + ",")
+            document.write("age : " + person.age + "<br>")
+
+            // 객체의 함수를 호출해보자
+            person.show()
+
+            // 새로운 리터럴 객체를 만들려면 다시 설계해야함
+            var person2 = {
+                name: "robin",
+                age: 25,
+                show: function(){
+                    document.write("show : " + this.name + " , " + "age : " + this.age + "<br>")
+                },
+                add: function(a,b){
+                    var c = a + b
+                    document.write("add : " + c + "<br>")
+                }
+            }
+            person2.show()
+            person2.show(10) // 파라미터 없는데 전달하면? 상관없음
+
+            person2.add(10,20)
+            //person.add(10,20) 에러 : 없는 메소드는 호출 불가 
+
+            // JS 는 유연한 언어이기 때문에 객체 생성 후 객체의 멤버를 추가할 수 있음. 
+            person.tel = "010-1234-5678" // 새로운 property 추가 
+            document.write("name: " + person.name + " , ")
+            document.write("age: " + person.age + " , ")
+            document.write("tel: " + person.tel + "<br>")
+
+            // tel 까지 포함하여 출력해주는 기능 메소드 새로이 추가 
+            person.out = function() {
+                person.show(),
+                document.write("tel : " + this.tel + "<br>")
+            }
+            person.out()
+
+            // 혹시 대입한 적이 없는 멤버변수를 출력하면?
+            document.write(person.address)
+
+            document.write("<hr>")
+
+            // 리터럴 객체는 여러개의 속성, 메소드가 있을 때.. 객체 생성때마다 관련 설계코드를 모두 다시 작성해야함.
+            // 객체가 많이 사용된다면 매우 짜증
+            // 미리 객체의 설계도를 만들어 놓고 필요할 때마다 객체로 생성하여 사용하는 기법이 등장 
+
+            // 2. 생성자 함수를 이용한 객체 생성 [ new 키워드로 객체 생성 ]
+            // 학생 객체 설계 : 이름 , 나이 , 전공
+
+            function Student(){
+                // 멤버변수 - property
+                this.name = "sam"
+                this.age = 23
+                this.major = "android"
+
+                // 멤버함수 - method
+                this.show = function(){
+                    document.write("student show : " + this.name + " , " + this.age + " , " + this.major + "<br>")
+                }
+
+                this.setMember = function(name, age, major){
+                    this.name = name
+                    this.age = age
+                    this.major = major
+                }
+            }
+
+            // 위 설계도( 생성자 함수 )를 이용하여 객체를 생성
+            var stu = new Student()
+            stu.show()
+
+            // 또 다른 학생 객체가 필요할 때.. 또 설계할 필요없이 new 만 사용하면 됌. 
+            var stu2 = new Student()
+            stu2.name = "robin"
+            stu2.age = 29
+            stu2.major = "IOS"
+
+            // 이런식으로 멤버값 일일이 대입 하려니 여러중 코딩,. 이게 짜증
+            var stu3 = new Student()
+            stu3.setMember("kim",26,"web")
+            stu3.show()
+
+            // 이런식이면 객체 생성 후에 항상 멤버값을 대입하는 기능메소드를 호출하는 코드가 추가로 요구됨.
+            // 그래서 객체를 new 하면서 멤버값을 전달할수 있다면 코드가 더 간결할것 같음. 생성자 함수 파라미터를 이용하자! 
+
+            function Stu(name, age, major){
+                this.name = name
+                this.age = age
+                this.major = major
+                this.show = function(){
+                    document.write("Stu : " + this.name + " , " + this.age + " , " + this.major + "<br>")
+                }
+
+                // setter , getter method
+                this.setName = function(name){
+                    this.name = name
+                }
+
+                this.getName = function(){
+                    return this.name
+                }
+            }
+
+            var s = new Stu("cho",30,"android")
+            s.show()
+
+            var s2 = new Stu() // 값을 전달 안하면? undefined!
+            s2.setName("hong")
+            document.write("name : " + s2.getName()+"<br>")
+
+
+
+
+
+            // 337p 예제 
+            function Car(model, speed, color) {
+                this.model = model
+                this.speed = speed
+                this.color = color
+                this.brake = function() {
+                    this.speed -= 10
+                }
+
+                this.accel = function() {
+                    this.speed += 10
+                }
+            }
+
+            var myCar = new Car("520d",60,"red")
+            document.write("모델 : " + myCar.model + " 속도 : " + myCar.speed + "<br>")
+            myCar.accel()
+            document.write("모델 : " + myCar.model + " 속도 : " + myCar.speed + "<br>")
+            myCar.brake()
+            document.write("모델 : " + myCar.model + " 속도 : " + myCar.speed + "<br>")
+
+
+            document.write("<hr>")
+            // 추가적인 내용들 
+            // 1) in 키워드 : 연산자
+            document.write('name' in stu) // name 속성이 있으면 true
+            document.write("<br>")
+            document.write('addr' in stu) // addr 속성이 없기에 false
+            document.write("<br>")
+
+            // 2) 객체 안에 객체가 멤버로 존재할 수 있음 
+            var flight = {
+                airline: "Korean air" ,
+                number: 777 ,
+                arrival: {
+                    nation: 'Japan',
+                    city: 'Tokyo'
+                }
+            }
+
+            document.write(flight.arrival.city + "<br>")
+            document.write(flight['airline'] + "<br>") // 연관배열로 멤버접근 가능
+            document.write("<br>")
+
+            // 3) Object.create() 메소드 -> 객체 clone 기능 
+            // 리터럴 객체의 단점. 재활용이 불가.
+            var p1 = {
+                name : "aaa",
+                age: 20,
+                show: function(){
+                    document.write("show : " + this.name + " , " + this.age + "<br>")
+                }
+            }
+
+            var p2 = Object.create(p1)
+
+            p1.show()
+
+            p2.name = "bbb"
+            p2.age = 30
+            p2.show()
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

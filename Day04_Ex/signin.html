@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>회원가입</title>
+        <style>
+            table tr td.rb{
+                text-align: right;
+            }
+            table tr td.label{
+                text-align: center;
+            }
+            input.inputbtn{
+                display: inline-block;
+                width: 200px;
+                text-align: center;
+            }
+
+            fieldset{
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <fieldset>
+            <legend>회원정보 입력</legend>
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td><input type="text"></td>
+                    <td><input type="button" value="중복검사"></td>
+                </tr>
+                <tr>
+                    <td>패스워드</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>패스워드 확인</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>휴대폰 번호</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>생일</td>
+                    <td><input type="date"></td>
+                </tr>
+                <tr>
+                    <td>홈페이지</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="rb"><input type="radio" name="gender" id="male"></td>
+                    <td class="label"><label for="male">남성</label></td>
+                </tr>
+                <tr>
+                    <td class="rb"><input type="radio" name="gender" id="female"></td>
+                    <td class="label"><label for="female">여성</label></td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <input type="submit" value="제출" class="inputbtn">
+        <input type="reset" value="초기화" class="inputbtn">
+    </body>
+</html>

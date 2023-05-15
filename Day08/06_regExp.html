@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS 유효성 검사</title>
+    </head>
+    <body>
+        
+        <input type="text" id="in1">
+        <button onclick="check()">유효성 검증</button>
+        <h3 id="aa"></h3>
+
+        <script>
+
+            function check(){
+
+                //검증용 정규표현식
+                var regExp=/^[a-zA-Z]+$/;//RegExp 객체  //영문자 1개 이상
+
+                var e = document.getElementById('in1');
+                // 입력된 글씨 값
+                var s = e.value;
+
+                // 검증 2가지 방법
+                // 1. String .match() 메소드
+                // if( s.match(regExp)) alert("OK");
+                // else alert("요구하는 형식이 아닙니다.");
+
+
+                // 2. RegExp 객체의 test() 메서드
+                // if(regExp.test(s)) alert("OK");
+                // else alert("요구하는 형식이 아닙니다.");
+
+                // 정규표현식 연습
+                regExp = /a/;                  // a 문자가 포함된 모든 입력 OK
+                regExp = /A/;                  // A 문자가 포함된 모든 입력 OK
+                regExp = /ab/;                 // ab 문자가 포함된 모든 입력 OK
+                regExp = /^a/;                 // 시작이 a 이면 모든 입력 OK
+                regExp = /^[a-z]/;             // 시작이 영어소문자 이면 모든 입력 OK
+                regExp = /a$/;                 // 끝이 a 이면 모든 입력 OK
+                regExp = /ab$/;                // 끝이 ab 이면 모든 입력 OK
+                regExp = /^a$/;                // a 한글자만 가능!
+                regExp = /^ab$/;               // ab 만 가능!
+                regExp = /^[a-z]$/;            // 영어소문자 한글자만 가능!
+                regExp = /^[a-zA-Z0-9]$/;      // 영어문자 또는 숫자 한글자만 가능!
+                regExp = /^[a-z]{2}$/;         // 영어소문자 2글자 가능!
+                regExp = /^[a-z]{2,4}$/;       // 영어소문자 2~4글자 가능!
+                regExp = /^\w{4,}$/;           // 문자 or 숫자 4글자 이상 가능!
+                regExp = /^[a-z]*$/;           // 영어소문자 0개 이상 가능![안써도 OK]
+                regExp = /^[a-z]+$/;           // 영어소문자 1개 이상 가능!
+                regExp = /^[a-z]?$/;           // 영어소문자 1개 또는 0개 가능!
+                regExp = /^[5-9]$/;            // 숫자 5-9 중에 1개
+                regExp = /^\d$/;               // 숫자 1개
+                regExp = /^\d\d\d$/;           // 숫자 3개
+                regExp = /^\d\d\da\d\d\d$/;    // 숫자 3개 a 숫자 3개 패턴
+
+                
+                // 생년월일 형식 검증 ####-##-##
+                regExp= /^\d\d\d\d-\d\d-\d\d$/
+
+                // 이메일 형식 ####@###.##
+                regExp = /^[a-zA-Z0-9!$%^&]+@[a-zA-Z]+.[a-z]+$/
+                
+                //URL 주소가 맞는지 확인
+                regExp= /^http:/  
+
+                // 혹시 / 한개를 검증하고 싶다면
+                regExp= /^\/$/ // 역슬래시 필요
+                var h = document.getElementById('aa');
+                
+                if(regExp.test(s)) h.innerHTML = "OK";
+                else h.innerHTML = "요구하는 형식이 아닙니다.";
+            }
+
+        </script>
+
+    </body>
+</html>

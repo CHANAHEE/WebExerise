@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Ex05</title>
+        <style>
+            p {
+                display: inline-block;
+                margin: 0px;
+                width: 170px;
+            }
+            #result1,#result2,#result3,#result4{
+                width: 300px;
+            }
+
+            #subBtn{
+                margin-left: 176px;
+                margin-top: 10px;
+            }
+        </style>
+
+        <script>
+            function checkPhone(){
+                var phone = document.getElementById('phone').value;
+                var regExp = /^\d\d\d-\d\d\d\d-\d\d\d\d$/;
+
+                if(!regExp.test(phone)) document.getElementById('result1').innerHTML = "올바른 전화번호를 입력하세요!";
+                else document.getElementById('result1').innerHTML = "OK";
+            }
+
+            function checkEmail(){
+                var email = document.getElementById('email').value;
+                var regExp = /^[a-zA-Z0-9!$%^&]+@[a-zA-Z]+.[a-z]+$/
+                
+                if(!regExp.test(email)) document.getElementById('result2').innerHTML = "올바른 이메일 형식을 입력하세요!";
+                else document.getElementById('result2').innerHTML = "OK";
+            }
+
+            function checkPass(){
+                var pass = document.getElementById('pass1').value;
+                var regExp = /^\w{6,8}$/
+                
+                if(!regExp.test(pass)) document.getElementById('result3').innerHTML = "비밀번호는 6~8 자리로 지정해주세요";
+                else document.getElementById('result3').innerHTML = "OK";
+            }
+
+            function certifyPass(){
+                var pass1 = document.getElementById('pass1').value;
+                var pass2 = document.getElementById('pass2').value;
+
+                if(pass1 != pass2) document.getElementById('result4').innerHTML = "비밀번호가 동일하지 않습니다.";
+                else document.getElementById('result4').innerHTML = "OK";
+            }
+        </script>
+    </head>
+    <body onload="loaded()">
+        <h2>회원 신청서</h2>
+
+        <form action="">
+            <p>이름*</p>
+            <input type="text">
+            <br>
+    
+            <p>성별*</p>
+            <label><input type="radio" name="rg" value="male" checked>남자</label>
+            <label><input type="radio" name="rg" value="female">여자</label>
+            <br>
+            
+            <p>휴대폰 번호Phone*</p>
+            <input type="search" onchange="checkPhone()" id="phone">
+            <p id="result1"></p>
+            <br>
+            
+            <p>이메일*</p>
+            <input type="text" onchange="checkEmail()" id="email">
+            <p id="result2"></p>
+            <br>
+            
+            <p>패스워드(6~8글자)</p>
+            <input type="text" onchange="checkPass()" id="pass1">
+            <p id="result3"></p>
+            <br>
+            
+            <p>패스워드 검증</p>
+            <input type="text" onchange="certifyPass()" id="pass2">
+            <p id="result4"></p>
+            <br>
+    
+            <input type="submit" value="제출" id="subBtn">
+            <input type="reset" value="지우기" id="resBtn">
+        </form>
+
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS viewPort</title>
+
+        <!-- 뷰포트 : 웹브라우저에서 document 영역의 가상의 사각형 영역 -->
+        <!-- 데스크탑 웹브라우저는 뷰포트가 실제 브라우저 사이즈의 변화에 따라 같이 변한다. -->
+        <!-- 모바일 웹브라우저는 기본적으로 뷰포트의 크기가 고정되어 있음. 실제 디바이스의 해상도와 상관없이 무조건 980으로 되어있다. -->
+        <!-- 그래서 웹화면이 엄청 작게 보이는 문제가 발생! -->
+        
+        <!-- 이를 해결하기 위해 뷰포트값을 설정해주어야 한다. -->
+        <meta name="viewport" content="width=400, initial-scale=1.0">
+        <meta name="viewport" content="width=600, initial-scale=1.0">
+        <!-- 980 이상은 적용 X 그냥 980으로 적용된다. -->
+        <meta name="viewport" content="width=2600, initial-scale=1.0">
+        <!-- 실디바이스의 뷰포트값보다 작은 값을 주면 그냥 실디바이스의 뷰포트값이 됨. -->
+        <meta name="viewport" content="width=200, initial-scale=1.0">
+        <!-- 디바이스의 width 값을 키워드로 가져와서 설정해주자. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h2>View Port Test</h2>
+        <p>This is Viewport Test Page</p>
+
+        <img src="./image/ms18.png" alt="ms18" style="width: 200px; border: 1px solid red;">
+    </body>
+</html>

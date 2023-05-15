@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Text Element</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+       
+        이곳에 글씨를 쓰면 브라우저에 보입니다.
+        두번째 줄입니다. 띄어쓰기도 ..             어차피 많이 띄워봐야 하나로만 인식합니다.
+        특수문자는 어떨까? : !@#$%^&*()~_+|[]{}:;''"<,.>/86123123123" .. 잘 나오지만 오류의 가능성이 있습니다. 
+        예를 들어 <abcd></abcd> 처럼 태그문으로 오해될 수 있음.
+
+        그래서 특수문자를 표시하는 특별한 문자 표기법이 있음. [엔티티 코드]
+
+        [
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        ]
+
+        <!-- 한 단락을 만들어주는 요소 -->
+        <p>단락 요소는 자동으로 한줄을 차지함.</p>
+        <p>당연하지만 두번째 <br>단락이므로 자동 다음 줄</p>
+
+        <!-- <br> 태그 처럼 종료 태그가 없는 요소를 Empty Element 라고 부름  -->
+        <!-- 권장하지는 않음 -->
+        <p>권장하지 않지만 종료태그가 없어도 에러 없음.
+
+        <!-- 작성한 모습 그대로 보여주는 요소 -->
+        <pre>
+            이 안에 작성한 그대로 보입니다.
+            이렇게 줄바꿈 하면 그대로 줄바꿈함. ㅋㅋ
+
+            이게 좋다고 볼 수 없           음. 글꼴도 이상하고 들여쓰기도 자동으로 됨.
+        </pre>
+
+        <!-- 제목글씨용 요소 -->
+        <h1>This is Heading Element</h1>
+        <h2>This is Heading Element</h2>
+        <h3>This is Heading Element</h3>
+        <h4>This is Heading Element</h4>
+        <h5>This is Heading Element</h5>
+        <h6>This is Heading Element</h6>
+
+        <!-- 존재하지 않는 태그는 무시된다.태그문 안쪽에 쓰여져있던 글자들은 그대로 출력됨 -->
+        <h7>This is Heading Element</h7>
+
+        <!-- 텍스트 서식 요소  -->
+        <p>텍스트 서식 <strong>강하게</strong> 입니다.</p>
+        <p>텍스트 서식 <em>강하게</em> 입니다.</p>
+
+
+        <!-- 수평 구분선 -->
+        <hr><hr><hr><hr>
+
+        ㅋㅋ 안뇽
+        <sub>아래첨자</sub>입니다.
+    </body>
+</html>

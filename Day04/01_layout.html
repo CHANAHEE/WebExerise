@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS Layout</title>
+
+        <style>
+            /* display 속성 */
+
+            /* 블럭 요소를 인라인 요소로.. */
+            #aa{
+                background-color: violet;
+                display: inline;
+                width: 300px;
+            }
+            #aa{
+                display: inline-block;
+                width: 300px;
+            }
+
+            /* 인라인 요소를 블럭 요소로.. */
+            img.bb{
+                background-color: aqua;
+                display: block;
+            }
+
+            /* display none 속성 */
+            #cc{
+                display: none;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        
+        <!-- display 속성 -->
+        <p id="aa">Hello World</p>
+        <a href="">Google</a>
+        <strong>Good Morning</strong>
+        <img src="./image/pome.png" alt="pome" class="bb">
+
+        <hr>
+        <hr>
+
+        <ul>
+            <li>aaa</li>
+            <li id="cc">bbb</li>
+            <li>ccc</li>
+        </ul>
+
+        <!-- 블럭 요소와 인라인 요소를 같이 사용할 때, 고려할 것들 -->
+
+        <!-- 블럭 요소안에 인라인 요소, 다른 블럭 요소 모두 넣을 수 있음. -->
+        <div style="background-color: tomato; border: solid; padding: 5px;">Nice <strong>aaa</strong> world</div>
+        <div style="background-color: teal; border: solid; padding: 5px;">Nice <p>bbb</p> world</div>
+
+        <!-- 블럭 요소안에 같은 블럭 요소가 있다면? -->
+        <!-- 하나씩 차근차근 읽어보자. 종료태그 없어도 사용가능! 즉 마지막 World 는 태그문 없이 작성된 글이 되버림 -->
+        <p style="background-color: tomato; border: solid; padding: 5px;">Nice <p>aaaa</p> World</p>
+
+        <!-- 인라인 요소 안에 블럭요소를 넣으면? 원래 안됨 -->
+        <span style="background-color: tomato; border: solid; padding: 5px;">Nice <p>aaa</p> World</span>
+
+        <hr>
+        <hr>
+
+        <!-- position 속성 -->
+        <div class="aaa">
+            <p id="one">block #1</p>
+            <p id="two">block #2</p>
+            <p id="three">block #3</p>
+        </div>
+
+        <style>
+            #one{
+                background-color: coral;
+                width: 200px;
+                height: 50px;
+            }
+            #two{
+                background-color: darkseagreen;
+                width: 200px;
+                height: 50px;
+
+                /* 원래 놓여질 위치에 배치됨 (default) */
+                position: static;
+                /* 원래 놓여질 위치에 배치되지만, 원래 놓여질 위치에서 위치속성으로 조정이 가능 */
+                position: relative;
+                /* 브라우저 문서의 좌측 상단을 기준으로 위치를 설정 (원래 배치될 위치에서 벗어남) 3번 박스의 위치를 잘 보자! */
+                /* absolute 일 때, 부모의 영역을 기준으로 배치하고 싶다면 .. 부모요소의 position 속성이 static 이 아니면 됨. */
+                position: absolute;
+                /* 브라우저 창의 상단을 기준으로 위치 설정 */
+                position: fixed;
+
+
+                /* 위치 좌표 설정 속성 : position: static 일때는 적용 X */
+                left: 50px;
+                /* margin 과 위치 좌표 속성은 분명한 차이가 있다! */
+                top: 30px;
+            }
+            #three{
+                background-color: khaki;
+                width: 200px;
+                height: 50px;
+            }
+
+            /* 블럭들의 부모요소 */
+            div.aaa{
+                background-color: black;
+                position: relative;
+            }
+        </style>
+    </body>
+</html>

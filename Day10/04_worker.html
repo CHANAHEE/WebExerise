@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Web Worker</title>
+
+        <script>
+            function aaa(){
+                var n = 0;
+                while(true){
+                    n++;
+                    document.querySelector('#hh').innerHTML = n;
+                }
+            }
+
+            var w;
+            function bbb(){
+                // 웹 워커는 웹서버환경에서만 동작함. 
+                if(w != undefined) {
+                    alert("이미 워커가 있어요");
+                    return;
+                }
+
+                w = new Worker("worker.js"); // 워커 객체를 만들면 자동 start
+
+                // 워커가 포스트해준 메시지 받기.
+                w.onmessage = function(event){
+                    document.getElementById('hh').innerHTML = event.data;
+                }
+                w.onerror = function(error){
+                    document.getElementById('hh').innerHTML = error.message;
+                }
+                w.onmessageerror = function(error){
+                    document.getElementById('hh').innerHTML = error.message;
+                }
+            }
+
+            function ccc(){
+                w.terminate();
+                w = undefined;
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Worker(Thread) 를 사용하지 않았을 때 문제점 확인 -->
+        <h2 id="hh">0부터 시작</h2>
+        <button onclick="aaa()">무한 반복문</button>
+        <button onclick="alert('clicked')">버튼</button>
+        <hr>
+
+        <button onclick="bbb()">Start Worker(Thread)</button>
+        <button onclick="ccc()">Stop Worker(Thread)</button>
+        
+    </body>
+</html>

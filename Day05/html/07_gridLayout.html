@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grid Layout</title>
+        <style>
+
+            .container{
+                display: grid;
+
+                grid-template-columns: auto auto auto auto auto;
+                grid-template-rows: auto 300px auto;
+            }
+
+            .container>*{
+                background-color: skyblue;
+                text-align: center;
+                padding: 20px 0px;
+                font-size: 30px;
+                border: 1px solid black;
+            }
+
+            header{ grid-column-start: 1; grid-column-end: 6;}
+            section.main{grid-column-start: 2; grid-column-end: 5;}
+            footer{grid-column-start: 1; grid-column-end: 6;}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>Header</header>
+            <nav>Menu</nav>
+            <section class="aa main">Content</section>
+            <aside>Login</aside>
+            <footer>Footer</footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Kakao Map API</title>
+        
+    </head>
+    <body>
+        <!-- 카카오 지도 API 사용법은 개발자 사이트에서.. -->
+        <!-- 웹 서버에서만 동작함! 서버 꼭 이용하기! -->
+
+
+        <!-- 지도를 보여줄 영역 : 사이즈는 필수 속성! -->
+        <div id="map" style="width:500px;height:400px;"></div>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=474b60b5d89310ea8883d2c333aa6787"></script>
+
+        <!-- 지도 관련 스크립트 -->
+        <script>
+            var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+            var options = { //지도를 생성할 때 필요한 기본 옵션
+                center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+                level: 3 //지도의 레벨(확대, 축소 정도)
+            };
+
+            var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+            // 마커 표시
+            var markerPosition = new kakao.maps.LatLng(33.408011,126.561234);
+            var marker = new kakao.maps.Marker({
+                position: markerPosition
+            });
+            marker.setMap(map);
+
+        </script>
+    </body>
+</html>

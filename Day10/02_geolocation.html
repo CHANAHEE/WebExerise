@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Geo Location</title>
+
+        <script>
+            function requestMyLocation(){
+                navigator.geolocation.getCurrentPosition(function(pos){
+                    var latitude = pos.coords.latitude;
+                    var longitude= pos.coords.longitude;
+
+                    document.getElementById('hh').innerHTML = latitude + " , " + longitude;
+                });
+            }
+
+            function updateLocation(){
+                id = navigator.geolocation.watchPosition(function(pos){
+                    var latitude = pos.coords.latitude;
+                    var longitude= pos.coords.longitude;
+
+                    // JS 템플릿 문자열 ` 백틱으로 구분
+                    document.querySelector('#hh').innerHTML = `${latitude} , ${longitude}`;
+                } , function(err){
+                    document.getElementById('hh').innerHTML = err.message;
+                });
+            }
+
+            function stopUpdateLocation(){
+                navigator.geolocation.clearWatch(id);
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="requestMyLocation()">my location</button>
+        <h2 id="hh">location</h2>
+
+        <button onclick="updateLocation()">위치 정보 자동 업데이트</button>
+
+        <button onclick="stopUpdateLocation()">위치 정보 갱신 종료</button>
+    </body>
+</html>

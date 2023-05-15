@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Ex02</title>
+        <script>
+            function loaded(){
+                document.getElementById('btn').onclick = function(){
+                    document.getElementById('pp').innerHTML = "이 텍스트는 자바 스크립트에서 변경한 것입니다."
+                }
+            }
+            
+        </script>
+    </head>
+    <body onload="loaded()">
+        <p id="pp">버튼을 누르면 이 요소의 내용이 변경됩니다.</p>
+        <button id="btn">버튼을 누르세요!</button>
+
+
+    </body>
+</html>

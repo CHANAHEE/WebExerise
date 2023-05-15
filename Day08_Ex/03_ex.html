@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Ex03</title>
+        <script>
+            function loaded(){
+                document.getElementById('btn').onclick = function(){
+                    var text = document.getElementById('in1').value
+                    if(isNaN(text)) alert("숫자가 아닙니다.")
+                    
+                }
+            }
+            
+        </script>
+    </head>
+    <body onload="loaded()">
+        <p id="pp">숫자를 입력하시오.</p>
+        <input type="text" id="in1"><button id="btn">입력완료</button>
+
+
+    </body>
+</html>

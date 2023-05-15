@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Table Element</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>message</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>sam</td>
+                <td>hello world</td>
+            </tr>
+            <!--  각 행(row) 의 데이터 셀 개수가 다를 수 있음  -->
+            <tr>
+                <td>2</td>
+                <td>robin</td>
+                <td>nice to meet you</td>
+                <td>2023-04-27</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <!-- 셀 병합 -->
+        <table border="1">
+            <!-- 한 줄만 있으면 비교할 셀이 없기에 span 영향이 안느껴짐 -->
+            <tr>
+                <td rowspan="2">111</td>
+                <td colspan="3">222</td>
+                <td>333</td>
+            </tr>
+            <tr>
+                <td>444</td>
+                <td>555</td>
+                <td>66666666</td>
+            </tr>
+
+            <!-- 테이블의 제목 -->
+            <caption><h1>HELLO</h1></caption>
+        </table>
+
+        <hr>
+
+        <!-- 테이블의 셀 영역(<td></td>) 안에 다른 요소(element) 넣기 -->
+        <table border="1" width = "50%">
+            <tr>
+                <td><a href="">NAVER</a></td>
+                <td>
+                    <ul>
+                        <li>aaa</li>
+                        <li>bbb</li>
+                        <li>ccc</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>테이블안에는 어떤 요소든 배치가능하다!</p>
+                </td>
+                <td>
+                    <img src="seolak.jpg" alt="설악산" width="70%">
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

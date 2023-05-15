@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>반응형 웹 디자인</title>
+        <style>
+
+            *{padding: 0px; margin: 0px}
+
+            #wrapper{
+                width: 90%;
+                border: 4px solid black;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* 가장 작은 해상도일때를 기준으로 함 */
+            #wrapper div{
+                display: inline-block;
+                height: 100px;
+                width: 100%;
+            }
+
+            /* 각 영영들의 배경색 지정 */
+            #wrapper div:first-child{
+                background-color: coral;
+            }
+            #wrapper div:nth-child(2){
+                background-color: chocolate;   
+            }
+            #wrapper div:nth-child(3){
+                background-color: cornflowerblue;   
+            }
+            #wrapper div:nth-child(4){
+                background-color: darkblue;   
+            }
+            #wrapper div:last-child{
+                background-color: yellow;
+            }
+
+            /* 미디어쿼리 적용 */
+            @media all and (min-width:320px){
+                #wrapper div{width: 100%;}
+            }
+
+            @media all and (min-width:600px){
+                #wrapper div{width: 50%;}
+            }
+
+            @media all and (min-width:800px){
+                #wrapper div{width: 20%;}
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div>aa</div><div>bb</div><div>cc</div><div>dd</div><div>ee</div>
+        </div>
+    </body>
+</html>
