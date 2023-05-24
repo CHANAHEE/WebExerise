@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS es6</title>
+    </head>
+    <body>
+        <script>
+            // 1_ ECMAScript6 (2015년 발표 : ES6 or ES2015) 의 새로운 문법들
+            // 1. 변수 선언 키워드 추가 : let, const
+            // 기존 var 변수 
+            var a = 10;
+            document.write(a + "<br>")
+
+            // 혹시 같은 이름의 변수를 또 선언하면? var 키워드만 무시됨. 
+            var a = 20;
+            document.write(a + "<br>")
+
+
+
+            /*
+
+            새로운 let 변수 
+            
+            */
+             
+            let b=100;
+            document.write(b + "<br>")
+
+            // 같은 이름의 let 변수를 또 선언하면? -- 문법적 에러 [ 치명적 에러여서 이 script 전체가 시작되지 못함. ]
+            // let b=200;
+            // document.write(c + "<br>")
+
+            // let 도 변수이므로.. 값을 변경할 수 있음.
+            b = 200;
+            document.write(b + "<br>") 
+
+
+
+            /*
+            
+            새로운 키워드 const 상수
+
+            */ 
+           const c = 1000;
+           document.write(c + "<br>")
+            
+           // 상수이므로 값 변경 불가
+           //    c=2000;
+           //    document.write(c + "<br>")
+
+           // 당연히 const 도 같은 이름의 상수선언은 문법적 에러
+           // const c = 2000;
+
+           // let 변수도 동적타입 변수임은 같음
+           let d = "aaa";
+           document.write(typeof(d) + "<br>")
+
+           d = 30;
+           document.write(typeof(d) + "<br>")
+
+           d = true;
+           document.write(typeof(d) + "<br>")
+
+           d = new Date()
+           document.write(typeof(d) + "<br>")
+
+           document.write("<hr>")
+
+           /*
+           
+           let, const 키워드가 기존 var 키워드와 다른 또 한가지 : 변수가 인식되는 범위가 다름. 
+           
+           */
+           // 기존 var 키워드 변수의 지역범위 - 함수단위
+           function aaa(){
+                var n = 100
+                document.write("n : " + n + "<br>")
+           }
+           aaa()
+           // 함수 밖에서 함수의 지역변수 n 을 사용해보자. 
+           // document.write("n : "+ n + "<br>") // n 을 인식할 수 없기에 에러!! 
+
+           if(true){
+                var m = 200
+                document.write("m : " + m + "<br>")
+           }
+           document.write("m : " + m + "<br>") // 지역변수가 아님. var 은 지역을 함수단위로만 구분함. 
+
+           // 대부분의 native 언어들은 지역의 범위를 중괄호로 잡는다. 
+           // let, const 는 var 과 다르게 중괄호가 지역이 된다. 
+           let k = 300
+           if(true){
+                let k = 400
+                document.write("k : " + k + "<br>")
+           }
+           document.write("k : " + k + "<br>")
+        </script>
+    </body>
+</html>

@@ -5,11 +5,18 @@
         <title>JS AJAX</title>
 
         <script>
+            $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "tjdrjs0803.dothome.co.kr/TeamProject/index.html",
+                dataType: "text",
+                contentType : "application/x-www-form-urlencoded;charset=UTF-8"
+            });
+            });
             function aaa(){
                 // GET 방식으로 서버로 부터 응답을 요청하기
 
                 var xhr = new XMLHttpRequest();
-
                 // 서버로부터 응답받으면 자동으로 발동하는 콜백함수 등록 : 필수적인 권장 open, send 함수 앞에 작성할것. 
                 // 서버로부터의 응답이 먼저올수도 있기 때문! 
                 xhr.onreadystatechange = function(){
@@ -20,19 +27,21 @@
                     if(xhr.readyState == 4 && xhr.status == 200){
                         var e = document.getElementById('target');
                         e.innerHTML = xhr.responseText;    
+                    }else{
+                        e.innerHTML = "xhr.responseText";    
                     }
                     
                 }
 
 
-                xhr.open('GET','./aaa.txt',true); // 세번째 파라미터 true : 비동기 동작여부 선택가능
-                // xhr.open('GET','./04_noAjax.html',true); 
+                //xhr.open('GET','./aaa.txt',true); // 세번째 파라미터 true : 비동기 동작여부 선택가능
+                xhr.open('GET','./04_noAjax.html',true); 
                 // xhr.open('GET','./getTest.php?name=SAM&msg=Good',true);
                 // 만약 다른 서버와 통신하고 싶다면? 예를 들어 OPEN API 데이터 구현 - 영화진흥위원회, 기상청 정보... 
                 // xhr.open('GET','http://www.w3schools.com/XML/cd_catalog.xml',true);
                 xhr.send();
 
-                
+        
             }
 
             function bbb(){
@@ -42,6 +51,7 @@
                         document.getElementById('target').innerHTML = xhr.responseText;
                     }
                 }
+                
 
                 xhr.open('POST','./postTest.php',true);
 
@@ -56,10 +66,11 @@
             <button onclick="aaa()">GET</button>
             <button onclick="bbb()">POST</button>
         </p>
+        <hr>
+
+        <!-- 서버의 응답결과를 보여주는 영역 요소 -->
+        <div id="target"></div>
     </body>
 
-    <hr>
 
-    <!-- 서버의 응답결과를 보여주는 영역 요소 -->
-    <div id="target"></div>
 </html>

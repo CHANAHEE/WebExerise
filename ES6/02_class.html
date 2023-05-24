@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS es6 class</title>
+    </head>
+    <body>
+        <script>
+            // 1_ 객체를 생성하는 새로운 방법이 등장
+
+            // 2_ 1. 클래스 선언 [ 객체를 만드는것이 X ]
+            class Person{
+                // 3_ 멤버변수 - property
+                name = "sam"
+                name = "asdf"
+                age = 20
+                address
+
+                // 6_ 생성자 메서드 존재 
+                constructor(){
+                    document.write("Person 객체 생성<br>")
+
+                    // 생성자 안에서 새로운 멤버변수 추가가 가능.
+                    this.tel = "01012345678"
+                }
+
+                // 4_ 멤버함수 - method
+                show(){
+                    //  document.write( name + " : " + age) ERROR! this 키워드를 사용해야함. 
+                    document.write( this.name + " : " + this.age + "<br>")
+                }
+            }
+
+            // 5_ 2. 객체 생성
+            let person = new Person()
+            person.show()
+
+            // 값을 입력하지 않은 멤버를 출력
+            document.write("address : " + person.address + "<br>")
+
+            document.write("tel : " + person.tel + "<br>")
+        </script>
+
+        <hr>
+
+        <script>
+            // 7_ 같은 .html 문서에서 연결한 다른 스크립트의 Person 클래스 사용가능? -> 가능!
+            let person2 = new Person()
+            person2.show()
+
+            class Member{
+                // id
+                // pw
+
+                // constructor(id,pw){
+                //     this.id = id
+                //     this.pw = pw
+                // }
+
+                // 10_ 생성자 오버로딩 !! 은 불가하다.. 
+                
+                // constructor(){
+                //     this.id = "id"
+                //     this.pw = "pw"
+                // }
+
+                // 11_ 그럼에도 오버로딩 같은 효과를 주고 싶다면 - 파라미터의 디폴트값.
+
+                constructor(id="aaaa",pw="1234"){ // 12_ 값을 받으면 받은값으로, 아니면 기본값으로.. 
+                    this.id = id
+                    this.pw = pw
+                }
+                show(){
+                    document.write("ID : " + this.id + "<br>PW : " + this.pw + "<br>") 
+                }
+
+                // 13_ 그렇다면 일반 메소드는 .. ? JS 는 오버로딩이 존재하지 않음 - 함수 덮어쓰기
+                out(){
+                    document.write("no data<br>")
+                }
+                out(a){
+                    document.write("data : " + a + "<br>")
+                }
+
+                // 15_ 리턴하는 메소드는 특별할 것 없음
+                add(a,b){
+                    return a+b
+                }
+
+                // 17_ 메소드를 익명함수로 만들수도있음.
+                display = function(){
+                    document.write("display 익명함수<br>")
+                }
+
+                // 20_ 클래스 밖에 정의한 함수를 메소드로 등록할 수 있음. 
+                play = aaa()
+            }
+
+            let member = new Member("sam","1234")
+            member.show()
+
+            // 8_ 혹시 값을 전달하지 않으면?
+            let member2 = new Member()
+            member2.show()
+
+            // 9_ 이럴 때 생성자 메소드 오버로딩하면 어떨까? 
+
+            // 14_ 일반 메소드 오버로딩 테스트
+            member.out()
+            member.out(1)
+
+            // 16_ 메소드 리턴받기
+            let sum = member.add(10,15)
+            document.write("sum : " + sum + "<br>")
+
+            // 18_ 익명함수로 정의한 메소드 호출
+            member.display()
+
+            // 19_ 선언적 함수 정의 
+            function aaa(){
+                document.write("aaa" + this.id)
+            }
+
+            // 21_ 외부 함수를 메소드로 등록하고 호출
+            //member.play()
+
+
+            // 22_ 상속해줄 클래스 
+            class Human {
+                constructor(name, age){
+                    this.name = name
+                    this.age = age
+                }
+                
+                show(){
+                    document.write(`name: ${this.name} , age: ${this.age}<br>`)
+                }
+            }
+
+            let h = new Human("sam",20)
+            h.show()
+
+
+            // 23_ 상속받기 [ 학생 : 이름,나이,전공 ]
+            class Student extends Human{
+                constructor(name, age, major){
+                    // 24_ JS 에서 반드시 명시적으로 부모생성자를 호출해주어야 함. 안하면 에러
+                    super(name,age) // 부모 클래스의 생성자에게 값 전달 요청 
+                    this.major = major
+                }
+
+                // 25_ 상속받은 메소드를 수정 - 오버라이드 
+                show(){
+                    super.show()
+                    document.write(`major: ${this.major}<br>`)
+                }
+            }
+
+            let stu = new Student("robin", 22, "android")
+            stu.show()
+        </script>
+
+        <hr>
+
+        <script>
+            // static 멤버
+        </script>
+
+        <hr>
+
+        <script>
+            // 구조분해할당 문법
+        </script>
+    </body>
+</html>
